@@ -22,4 +22,3 @@ plot(flowers,insects,pch=19,cex=3)
 plot(flowers,insects,pch=19,cex=0.5) #this function is to reduce the dimension
 #color
 plot(flowers,insects,pch=19,cex=3,col="cyan4")
-
