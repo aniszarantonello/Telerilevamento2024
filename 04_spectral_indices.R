@@ -20,3 +20,15 @@ im.plotRGB(m2006,1,2,3) #così plottiamo l'infrarosso nel rosso? il prof non lo 
 im.plotRGB(m2006,2,1,3) #nir nel verde
 im.plotRGB(m2006,2,3,1) #nir nel blu
 
+#facciamo un  multiframe con tutte le immagini
+par(mfrow=c(2,3)) #due righe e tre colonne dove le righe sono 1992 e 2006 e le colonne il nir nelle diverse bande
+#adesso carichiamo tutte le immagini
+im.plotRGB(m1992,1,2,3) #nir on red
+im.plotRGB(m1992,2,1,3) #nir on green
+im.plotRGB(m1992,2,3,1) #nir on blue
+im.plotRGB(m2006,1,2,3) #nir on red
+im.plotRGB(m2006,2,1,3) #nir on green
+im.plotRGB(m2006,2,3,1) #nir nel blu
+
+#possiamo espostarlo in png o pdf non so come
+
