@@ -32,7 +32,7 @@ im.plotRGB(m2006,2,3,1) #nir nel blu
 
 #possiamo espostarlo in png o pdf non so come
 
-#calcoliamo il DVI (difference vegetation index)
+#calcoliamo il DVI (Difference Vegetation Index)
 #banda 1=nir
 #banda 2=red
 dvi1992=m1992$matogrosso_l5_1992219_lrg_1 - m1992$matogrosso_l5_1992219_lrg_2
@@ -55,6 +55,14 @@ par(mfrow=c(1,2))
 plot(dvi1992, col=cl)
 plot(dvi2006, col=cl)
 
+#calcoliamo NDVI (Normalised Difference Vegetation Index)
+ndvi1992=dvi1992/(m1992[[1]]+m1992[[2]])
+ndvi2006=dvi2006/(m2006[[1]]+m2006[[2]])
+
+dev.off()
+par(mfrow=c(1,2))
+plot(ndvi1992,col=cl)
+plot(ndvi2006,col=cl)
 
 
 
