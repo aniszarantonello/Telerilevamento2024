@@ -32,3 +32,30 @@ im.plotRGB(m2006,2,3,1) #nir nel blu
 
 #possiamo espostarlo in png o pdf non so come
 
+#calcoliamo il DVI (difference vegetation index)
+#banda 1=nir
+#banda 2=red
+dvi1992=m1992$matogrosso_l5_1992219_lrg_1 - m1992$matogrosso_l5_1992219_lrg_2
+
+dvi1992=matogrosso~2219_lrg_1 - matogrosso~2219_lrg_2 #questo un modo alternativo. richiamo le bande con il nome dell'immagine, così mi escono le info
+
+#plot
+cl<-colorRampPalette(c("darkblue","yellow","red","black"))(100) #prima creiamo la palette di colori
+plot(dvi1992, col=cl)
+
+#calcoliamo il DVI del 2006
+m2006<-im.import("matogrosso_ast_2006209_lrg.jpg") #prima rinominiamo l'immagine
+dvi2006=m2006$matogrosso_ast_2006209_lrg_1 - m2006$matogrosso_ast_2006209_lrg_2
+dvi2006 #così vediamo valori max e min
+cl<-colorRampPalette(c("darkblue","yellow","red","black"))(100) #prima creiamo la palette di colori
+plot(dvi2006, col=cl)
+
+#plot dvi1996 beside the dvi2006
+par(mfrow=c(1,2))
+plot(dvi1992, col=cl)
+plot(dvi2006, col=cl)
+
+
+
+
+
