@@ -17,4 +17,18 @@ im.plotRGB(eclissi, 1, 2, 3) #si vede l'immagine; non sappiamo quali siano le ba
 
 deforestation<-rast("driversdef.jpg") #cos' importo l'altra immagine
 
+#importing images from copernicus
+soil<-rast("soil.nc")
+plot(soil) #così plotto l'immagine
+plot(soil[[1]]) #per plottare solo il primo livello
+
+#crop data
+ext<-c(25,30,55,48) #definisco le estensioni xmin xmax, ymin,ymax
+soilcrop<-crop(soil,ext) #ottengo una nuova variabile  #NON VA
+plot(soilcrop[[1]])
+
+
+
+
+
 
