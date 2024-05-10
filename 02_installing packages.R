@@ -1,4 +1,4 @@
 #installing new packages in R
 
-install.packages("terra") #così installi il pacchetto dal CRAN
-#library(terra) #così richiami il pacchetto e speri non ci siano errori
+install.packages("terra") #with this function we can install packages from the CRAN 
+library(terra) #you can call the package and hope there aren't any problems
