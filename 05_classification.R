@@ -1,69 +1,64 @@
-#quantiffyng land cover change
+#quantiffying land cover change
 
-install.packages("ggplot2") #così installiamo il nuovo pacchetto 
-library(ggplot2) #richiamiamo il pachhetto
-library(terra)
-library(imageRy) #richiamiamo tutti i pacchetti che ci servono
+install.packages("ggplot2") #weinstall  new package that we will use 
+library(ggplot2) #we call back the package
+library(terra) 
+library(imageRy) #we call back all the packages we will need
 
 #listing images
-im.list() #chiediamo la lista di immagini presenti nel pacchetto
+im.list() 
 
 #importing data
-m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
-sun<-im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+sun <- im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg") #we start using a new image 
 
-sunc<-im.classify(sun,num_clusters=3) #
+sunc <- im.classify(sun, num_clusters = 3) #we decide to classify the image with 3 groups/clusters 
 
-#matogrosso images
+#importing matogrosso images
 m1992<-im.import("matogrosso_l5_1992219_lrg.jpg")
 m2006<-im.import("matogrosso_ast_2006209_lrg.jpg")
 
 #classifying images
-m1992c<-im.classify(m1992,num_cluster=2) #ci interessa la foresta e tutto il resto quindi basta due
+m1992c <- im.classify(m1992, num_cluster = 2) #in this case we are intrested in the forest so we put 2 clusters: the forest and all the rest
 
-#class 1=forest
-#class 2=river and human modification
+#class 1 = forest
+#class 2 = river and human modification
 
-m2006c<-im.classify(m2006,num_cluster=2)
+m2006c <- im.classify(m2006, num_cluster = 2) #we classify also the image from 2006 using 2 clusters as well
 
-#class 1=forest
-#class 2=human
-#attenzione che le classi potrebbero invertirsi tra una foto e l'altra
+#class 1 = forest
+#class 2 = human
+#we have to pay attention because the two classes could be inverted since is a random process (the first pixel picked up) 
 
 plot(m1992c) #così ricontrolliamo 
 plot(m2006c)
 
 #calculating frequencies
-f1992<-freq(m1992c)
-f1992 #così vediamo il conteggio dei pixel
-tot1992<-ncell(m1992c) #così abbiamo il tot dei pixel
-prop1992=f1992/tot1992
-prop1992
-perc1992=prop1992*100
+f1992 <- freq(m1992c) #the response of R will be the count of pixels organized in the two classes
 
-#percentages: forest=83%, human=17%
+#proportions
+tot1992 <- ncell(m1992c) #this is the total number of pixels
+prop1992 = f1992 / tot1992 #is a proportion between the frequences and the total
 
-f2006<-freq(m2006c)
-f2006
-tot2006<-ncell(m2006c)
-prop2006=f2006/tot2006
-prop2006
-perc2006=prop2006*100
-perc2006
+#percentages
+perc1992 = prop1992 * 100 #we multiplicate the proportion per 100 #percentages: forest=83%, human=17%
 
-#percentages06: forest=45%, human=54%
+#we do the same for matogrossum 2006
+f2006 <- freq(m2006c) 
+tot2006 <- ncell(m2006c)
+prop2006 = f2006 / tot2006
+perc2006 = prop2006 * 100 #percentages06: forest=45%, human=54%
 
 #building the dataframe
-class<-c("forest","human")
-y1992<-c(83,17)
-y2006<-c(45,55)
+class <- c("forest", "human") #we mention the two classes that will appear on x asses 
+p1992 <- c(83, 17) #here the percentage of 1992
+p2006 <- c(45, 55) #here the percentage of 2006
 
-tabout<-data.frame(class,y1992,y2006) #creiamo un dataframe in cui inserire le percentuali
-tabout #la visualizziamo
+#building the dataframe
+tabout <- data.frame(class, p1992, p2006) #we create a dataframe where we put the 2 classes and the related percentages for both years 
+tabout #we visualize the table
 
 #ggplot2 graphs
-geom_bar(stat="identity",fill="white") #tipo di statistica che noi vogliamo rappresentare:media,mediana...noi vogliamo i valori esatti che abbiamo quindi identity; fill è il colore con il quale vogliamo riempire il grafico
-ggplot(tabout,aes(x=class,y=y1992,color=class)) + geom_bar(stat="identity",fill="white") #nn vaaa
+geom_bar(stat = "identity", fill="white") #stat refers to the statistic type we want to represent: mean, median...we want the exact values so we put "identify"; fll refers to the filling color
 #aestethic riguarda la struttura del grafico
 #con la prima parte abbiamo solo aggiunto un pezzo di funzione, per fare il grafico serve geom_bar
 
