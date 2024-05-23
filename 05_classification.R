@@ -58,26 +58,20 @@ tabout <- data.frame(class, p1992, p2006) #we create a dataframe where we put th
 tabout #we visualize the table
 
 #ggplot2 graphs
-geom_bar(stat = "identity", fill="white") #stat refers to the statistic type we want to represent: mean, median...we want the exact values so we put "identify"; fll refers to the filling color
-#aestethic riguarda la struttura del grafico
-#con la prima parte abbiamo solo aggiunto un pezzo di funzione, per fare il grafico serve geom_bar
+ggplot(tabout, aes(x = class, y = p1992, color = class)) + geom_bar(stat = "identity",   fill = "white")
+#ggplot #with the initial part we only added a piece of the function: the table to plot, aestethic refers to the graphic structure so what we want in x and y and with which color; to create the graphic we need geom_bar
+#geom_bar #stat refers to the statistic type we want to represent: mean, median...we want the exact values so we put "identify"; fill refers to the filling color 
 
-#facciamo lo stesso per 2006
-ggplot(tabout,aes(x=class,y=y2006,color=class)) + geom_bar(stat="identity",fill="white")
+#we do the same for 2006
+ggplot(tabout, aes(x = class, y = y2006, color = class)) + geom_bar(stat = "identity", fill = "white")
 
+#to blend the two graphics in only one we need a new package 
+install.packages("patchwork") #we install the package
+p1 <- ggplot(tabout, aes(x = class, y = y1992, color = class)) + geom_bar(stat = "identity", fill = "white") #we mention the first graphic
+p2 <- ggplot(tabout, aes(x = class, y = y2006, color = class)) + geom_bar(stat = "identity", fill = "white") #we mention also the second one
+p1 + p2 #with this simple sum we join them
 
-install.packages("patchwork")
-p1<-ggplot(tabout,aes(x=class,y=y1992,color=class)) + geom_bar(stat="identity",fill="white")
-p2<-ggplot(tabout,aes(x=class,y=y2006,color=class)) + geom_bar(stat="identity",fill="white")
-p1+p2
-
-#correcting for y axis range
-p1<-ggplot(tabout,aes(x=class,y=y1992,color=class)) + geom_bar(stat="identity",fill="white")+ylim(c(0,100)) #chiediamo che l'asse delle y vada da 0 a 100
-p2<-ggplot(tabout,aes(x=class,y=y2006,color=class)) + geom_bar(stat="identity",fill="white")+ylim(c(0,100))
-p1+p2 #adesso i due grafici hanno la stessa scala per cui è facile fare confronti
-
-
-
-
-
-
+#correcting for y axis range: so that the two graphs have the same scale
+p1 <- ggplot(tabout, aes(x = class, y = y1992, color = class)) + geom_bar(stat = "identity", fill = "white") + ylim(c(0, 100)) #we want the y axis to vary between 0 and 100. 
+p2 <- ggplot(tabout, aes(x = class, y = y2006, color = class)) + geom_bar(stat = "identity", fill = "white")+ ylim(c(0, 100)) #the same for the second graphic
+p1 + p2 #now both graphics have the same scale and that's ok to make comparisons
