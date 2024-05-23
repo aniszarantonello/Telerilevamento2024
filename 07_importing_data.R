@@ -1,34 +1,33 @@
 #importing data from external sources
 
-#ho scaricato il file eclissi.png nella cartella Download del PC
+#I have downloaded the file eclissi.png in "Download" of my PC
 
-library(terra)
+library(terra) 
 library(imageRy)
 
-setwd("C:/Users/anisz/Downloads") #spieghiamo al sistema in quale cartella del nostro PC estrarre i dati che vogliamo caricare #wd sta per working directory, molto utilizzato nelle funzioni
-#nb x windows: usare il backslash non va bene ad R, bisogna invertire \ con /
+setwd("C:/Users/anisz/Downloads") #we explain to the system in which folder of my PC it has to extract the data we want to import #wd refers to working directory
+#nb x windows: using the backslash doesn't work for R, we have to invert \ (proprieties of the file) with /
 
-#imprting images
-eclissi<-rast("eclissi.png") #la funzione crea degli oggetti delle classi SpatRaster #occhio al nome, serve anche l'estensione
-eclissi #richiama l'immagine per cui ci escono i dati vari
+#importing images
+eclissi <- rast("eclissi.png") #this function creates SpatRaster objects #pay attention to the name, the extension is fundamental
+eclissi #in this way we recall the image so we have various data back
 
 #plotting data
-im.plotRGB(eclissi, 1, 2, 3) #si vede l'immagine; non sappiamo quali siano le bande ma possiamo invertirle per visualizzare l'immagine nelle varie bande
+im.plotRGB(eclissi, 1, 2, 3) #we see the image with original colors; we don't know which are the bands but we can invert them to visualize the image in the various bands
+im.plotRGB(eclissi, 3, 2, 1)
+im.plotRGB(eclissi, 2, 3, 1)
 
-deforestation<-rast("driversdef.jpg") #cos' importo l'altra immagine
+#difference between the bands
+dif = eclissi[[1]] - eclissi[[2]]
+dif
 
-#importing images from copernicus
-soil<-rast("soil.nc")
-plot(soil) #così plotto l'immagine
-plot(soil[[1]]) #per plottare solo il primo livello
+#importing images from Copernicus: we save the image in the PC in the same working directory
+soil <- rast("soil.nc")
+plot(soil) #in this way I plot the image 
+plot(soil[[1]]) #I only plot the first level 
 
 #crop data
-ext<-c(25,30,55,48) #definisco le estensioni xmin xmax, ymin,ymax
-soilcrop<-crop(soil,ext) #ottengo una nuova variabile  #NON VA
-plot(soilcrop[[1]])
-
-
-
-
-
-
+ext <- c(25, 30, 55, 48) #I can cut the image with this cut out extension, we have to define xmin, xmax, ymin and ymax
+soilcrop <- crop(soil, ext) #I obtain a ne new variable 
+plot(soilcrop) #I can plot it
+plot(soilcrop[[1]]) 
