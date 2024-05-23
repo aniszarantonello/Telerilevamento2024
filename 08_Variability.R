@@ -6,52 +6,49 @@ im.list() #as always in this way we obtain the list of files
 #we use the sentinel image
 sent <- im.import("sentinel.png") #is an image with 4 bands but one is for control; we only need 3 levels 
 
-# la plottiamo con solo le tre bande che ci servono 
+#we only plot the 3 bands we need
 im.plotRGB(sent, 1, 2, 3)
-#NIR = banda 1, red = banda 2, green = banda 3. Questo vuol dire che la parte rossa (relazionata al NIR) è la parte di bosco e prateria. 
+#NIR = band 1, red = band 2, green = band 3. This means that in red (related to NIR) we see woods and grassland
 
-# possiamo giocare un po' con i colori di RGB 
-im.plotRGB(sent, 2,1,3) #si nota un po' meglio la differenza tra prateria e bosco
+#we can change the colors on RGB 
+im.plotRGB(sent, 2, 1, 3) #we can see better the difference between woods and grassland
 
-# ora calcoliamo la deviazione standard (ma solo su una banda, non tutte e tre), quello che facciamo questo caso è sceglierne una, nella prossima lezione facciamo analisi multivariata
-# di solito si usa il livello che maggiormente descrive gli oggetti, quindi in questo caso il nir. 
-nir <- sent[[1]] #per evitare di scrivere sent[[1]] tutte le volte. 
+#now we can calculate the standard deviation (only on a single band), now we choose a single one and in the next lesson we will see the multivariate analysis
+#normally we use the level that better describes the objects, the nir in this case 
+nir <- sent[[1]] #this is to avoid writing "sent[[1]]" every time
 
-#creo color ramp palette 
-cl<-colorRampPalette(c("black", "blue", "green", "yellow")) (100)
+#creating a color palette 
+cl <- colorRampPalette(c("black", "blue", "green", "yellow")) (100)
 plot(nir, col=cl)
 
-# funzione focal, si usa per calcolare la variabilità, si usa la moving window 
-sd3 <- focal(nir, matrix(1/9, 3,3), fun=sd) 
-#primo oggetto è su cosa si basa, poi dobbiamo descrivergli la finestra usando una matrice (sono stessi elementi come in vettore ma disposti in 2 dimensioni)
-# all'interno di matrix dobbiamo mettere tre argomenti, il primo il range di pixel da prendere (mettiamo da quale a quale quindi 1/9), come sono diposti (in questo caso non c'è dubbio ma dobbiamo mettere come diporli quindi 3,3)
-# in focal dobbiamo anche mettere la funzione che vogliamo calcolare, quindi nel nostro caso sd (standard deviation)
-# diamo il nome al tutto per es sd3, importante non sd perchè altrimenti riconosce sd come oggetto e non come funzione 
+#calculating variability
+sd3 <- focal(nir, matrix(1/9, 3, 3), fun = sd) #this function allows to calculate variability, we use moving window 
+#the first object refers to the band, than we have to describe the window using a matrix (the same elements as in a vector but here they are in two dimensions)
+#the 3 arguments in matrix refer to: the range of pixel to take, from 1 till 9, in which way they are organized (3, 3) 
+#fun refers to the funcion we want to calculate and sd refers to standard deviation
 
-#plottiamo questa diversità
-plot(sd3) #vediamo che non si nota moltissimo la variabilità 
+#plotting the variability
+plot(sd3) #in our case we don't see a lot of variability 
 
-#esistono colorampalette che sono adatte anche a persone con daltonia, dobbiamo installare il pacchetot viridis che le contiene 
-install.packages("viridis")
+#installing viridis
+install.packages("viridis") #in this package there are some color palette that can be well seen by color-blind people 
 library(viridis)
 
-# creiamo una nuova color ramp palette con i colori di viridis. ci sono codici che rispecchiamo determinate scale cromatiche all'interno di viridis
-viridisc <- colorRampPalette(viridis(7)) (256)
-plot(sd3, col=viridisc)
-# in questo caso sono visibili da tutti i daltonici
+#we create a new color palette with colors from viridis. Codes reflect determined chromatic scale inside viridis
+viridisc <- colorRampPalette(viridis(7)) (256) #this is the color palette
+plot(sd3, col=viridisc) #we plot the sd with the color palette from viridis
 
-# ora proviamo ad allargare la moving window a 7x7
-sd7 <- focal(nir, matrix(1/49, 7, 7), fun=sd)
-plot(sd7, col=viridisc)
+#we can enlarge the moving window up to 7x7
+sd7 <- focal(nir, matrix(1/49, 7, 7), fun = sd)
+plot(sd7, col = viridisc)
 
-# facciamo uno stack con i due calcoli di deviazione standard per vederli assieme 
-stacksd <- c(sd3, sd7)
-plot(stacksd, col= viridisc)
-# notiamo come allargando si sfochi l'immagine 
+#stack
+stacksd <- c(sd3, sd7) #in this way we see both calculations toghether
+plot(stacksd, col = viridisc)
 
-# ora gaurdiamo il 13 x 13 per vedere come cambia 
-sd13 <- focal(nir, matrix(1/169, 13, 13), fun=sd)
-plot(sd13, col=viridisc)
-stacksd <- c(sd3, sd7, sd13)
-plot(stacksd, col= viridisc)
-# anche in questo caso si vede bene come aumenti la sfocatura dovuto al fatto che usiamo un numero sempre maggiore di pixel per calcolare la nostra deviazione standard.
+#now we do a moving window 13 x 13 to see the changment 
+sd13 <- focal(nir, matrix(1/169, 13, 13), fun = sd)
+plot(sd13, col = viridisc)
+
+stacksd2 <- c(sd3, sd7, sd13) #creating a new stack
+plot(stacksd2, col = viridisc) #we can see that the blurring improves due to the increasing number of pixel we use to calculate the sd
