@@ -51,4 +51,106 @@ The lyrics of Jigsaw Falling into Place paint a vivid picture of a night out, ca
 \footnote{In reality Paul have not said neither of these things} % to insert some notes at the end of the page
 \bigskip
 
+To view a YouTube video that has absoloutly nothing to do with our study: 
+\url{https://www.youtube.com/watch?v=Hobdg-Fp9kI} % inserting a link
 
+\newpage % adding a new page
+
+\section{Methods} % creating Methods section
+This study is the best result of my spontaneous imagination during a listening session in the gardens
+
+\subsection{Study Area} % creating a subsection
+Personally I really love this song, I think it's crazy
+
+\subsection{Algoritms}
+
+% Writing an equation
+% We can type in the web LaTeX Math and try to find all the various sections.
+
+For this study we used some equations (mathematical of course)\footnote{Of course we are joking.. no equation needed in serious studies}
+
+\ref{eq:sum}: % I call back the equation that I create below
+
+\begin{equation} % creating the equation
+    T = \sum p_i % \sum insert the sum symbol, then I put what I want
+\label{eq:sum} % I can attribute a label to the eq. so that I can call it back 
+\end{equation} % End of it 
+
+% another equation
+Obviously there is another important equation due to the fact that Newton loved Radiohead (probably yes if he had known them) \ref{eq:newton}:
+\begin{equation}
+    F = \sqrt[2]{G \frac{m_1\times m_2}{d^2}} 
+    % \sqrt to put under root, [] to put the power (exponent) of the root 
+    % \frac to do the fraction (curly brackets with numerator and curly brackets with denominator)
+    % _ necessary to write the subscript of the arguments
+    % \times{} multiplication function. 
+\label{eq:newton}
+\end{equation}
+
+\newpage
+
+\section{Results}
+Just as you take my hand. Just as you write my number down. Just as the drinks arrive. Just as they play your favourite song. As your bad day disappears. No longer wound up like a spring. Before you've had too much. Come back in focus again. The walls are bending shape. They've got a Cheshire cat grin. All blurring into one. This place is on a mission. Before the night owl. Before the animal noises. Closed circuit cameras. Before you're comatose.
+
+\section{Discussion}
+No explaination needed. \ref{sec:intro} % I call back the lable of the intro section 
+
+We where able to observe: 
+\begin{itemize} % Function to create a bulletted list (the argument is itemize)
+    \item Hand 
+    \item Number 
+    \item Drink
+    \item Favourite song 
+\end{itemize} % end of the list
+
+Best 2 observations: \footnote{Astronauts making love was not so funny to look at..}
+\begin{enumerate} % The same function but with enumerate as argument do an enumerated list
+    \item Hand
+    \item Favourite song 
+\end{enumerate}
+
+\newpage 
+
+One of the best images we where able to take from the basement is \ref{fig:Rad}
+
+% adding an image 
+\begin{figure}
+    \centering % centering the image in the page
+    \includegraphics[width=\textwidth]{space.jpg} % [] in this way the image is wide as the text is. If we want half wide we would write width=0.5. The image has to be downloaded in the PC and call it back with the name of the extention.
+    \caption{The band in the basement} % inserting a caption for the image
+    \label{fig:Rad} % to call it back in the text
+\end{figure}
+
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+\bigskip
+% let's do a table
+\hline % drawing an horizontal line (horizontal)
+\smallskip
+\textbf{IMPORTANT}
+
+\bigskip
+\textbf{NO musicians were hurt during this study.}
+\textit{at least not yet..}
+\smallskip
+\hline % I close the box drawing another line
+% maybe some errors that we don't get
+
+\newpage
+
+\begin{thebibliography}{999}
+    \bibitem[Paul,2010]{Paul2010} % inside [] i put what I want that appears in the text while inside {} i put in which way I want to call, so the lable to call it back.
+    Paul, E. (2010). Let's all love Radiohead.
+    
+    \bibitem[Paul et al., 2013]{Paul2013}
+    Paul, A. L., Wheeler, R. M., Levine, H. G., \& Ferl, R. J. (2013). I have no more ideas to convince you listening to them.
+\end{thebibliography}
+
+\end{document}
