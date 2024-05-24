@@ -1,0 +1,148 @@
+\documentclass{beamer} % we say the class of presentations
+\usepackage{graphicx} % to insert images
+
+% We only want to change the style of the presentation, there are some matrixes with different styles and colors.
+\usetheme{}
+\usecolortheme{crane} % I also can use other colors of course 
+% All remains the same except color and strcture 
+
+\title{Presentazione in LaTex}
+\author{Anis Zarantonello}
+\date{maggio 2024}
+
+% Slides are frame, we have to insert them
+
+\begin{document}
+
+\maketitle % is a prefixed way to make the title, is necessary if we want uniform titles 
+
+\AtBeginSection[] % this function does whatever I want at every section
+{
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection] % to do an index at the beginning of every section to make evident the new section.
+\end{frame}
+}
+
+\section{Introduction}
+
+\begin{frame}{My first slide} % title inside the curly backets
+here I write whatever I want % it will appear on te slide
+\end{frame}
+
+\begin{frame}{Itemize}
+In this presentation we will talk about: 
+    \begin{itemize}
+        \item This
+        \item This
+        \item And this 
+\end{itemize}
+\end{frame}
+
+% I want to put them as consecutives, not all together when I arrive at this slide. We can create a lot of different slides that then seems like animated.
+\begin{frame}{Itemize}
+In this presentation we will talk about: 
+    \begin{itemize}
+        \item This
+        \pause \item  This
+        \pause \item  And this
+\end{itemize}
+\end{frame}
+
+
+% We can change the text dimensions. Every size (in pt) has a code, ua function that give us the size
+
+\begin{frame}{trying}
+I'm not so sure  \Huge{Enorme}
+\end{frame}
+
+\begin{frame}{Start a new line}
+We can do it with the duble backslash \\
+And than again \\
+\bigskip 
+Now I have a bigger space
+\end{frame}
+
+\begin{frame}{Boldtype and more}
+Sometimes is necessary to write something in \textbf{blablabla}. The same we can do with \textit{tarariro} if we want cursive
+\end{frame}
+
+% if I want to insert formulas I can find in wikibook all the infos to find the code
+\section{Formulas}
+\begin{frame}{Algoritms} 
+Standard deviation formula \\
+\bigskip
+\centering % this to center it 
+    \delta = \sqrt{\frac{\displaystyle\sum_{i=1}^{N}{(x- \mu)^2}}{N}} 
+% We write the function, than we start from the fraction, we insert num and denom, then the summation and the power elevation of 2. Than we have to insert the subsript and the summit of the summation symbol and we want them above it, so we use \displaystyle. 
+% Square root outside of all. To have strange symbols instead of having sd or mu I have to put the slash before it recognizes it in this way. 
+
+\section{Results} % 
+\begin{frame}{Results} % I want an image so:
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.9\linewidth]{space.jpg}
+        % \caption{Enter Caption} if I want
+        \label{fig:enter-label}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Results 2} % if I want to put 2 images:
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\linewidth]{space.jpg}
+        \includegraphics[width=0.4\linewidth]{space.jpg}
+        % \caption{Enter Caption} 
+        % \label{fig:enter-label} in this case we don't need it
+\end{figure}
+\end{frame}
+
+% If we want 4 images
+
+\begin{frame}{Results 3} % 4 images: 2 and 2
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.4\linewidth]{space.jpg}
+        \includegraphics[width=0.4\linewidth]{space.jpg} \\ % the trick is to put the new line where we want
+        \includegraphics[width=0.4\linewidth]{space.jpg}
+        \includegraphics[width=0.4\linewidth]{space.jpg} \\ % we go in a new line to wrote at the end of the page
+        % \caption{Enter Caption} 
+        % \label{fig:enter-label} in this case we don't need it
+\end{figure}
+\bigskip % if we want a bigger space. Even though there is \\ is bigskip that decides
+\centering
+\scriptsize{Rocchini et al. 2024} % scriptsize is to make smaller the writing.
+\end{frame}
+
+% We can try to do some columns but verify the script on Git.
+
+\begin{frame}{Columns}
+    \begin{columns}
+    \begin{column}{width=0.5\textwidth}
+        here I can write
+    \end{column}
+    \begin{column}{width=0.5\textwidth}
+          \includegraphics[width=0.5\linewidth]{space.jpg}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+% this part of the code is from the Professor, the lesson of 15/05 
+\begin{frame}{Columns}
+    \begin{columns}
+        \begin{column}{width=.5\textwidth}
+            A small amount of text  here or a larger one as we wish...
+        \end{column}
+        \begin{column}{width=.5\textwidth}
+            \includegraphics[width=.4\linewidth]{stats.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\end{document}
+
+
+
+
+\end{document}
