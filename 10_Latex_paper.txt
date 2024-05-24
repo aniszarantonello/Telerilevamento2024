@@ -15,7 +15,7 @@
 
 \begin{document} % after a begin there is always an end that end the operation.
 
-\title{My first LaTeX doc - Jigsaw Falling into Places}
+\title{My first LaTeX doc - Jigsaw Falling into Place}
 \author{Anis Zarantonello}
 \date{11 Maggio 2024} % permit to change the settings (american or european) of the date depending on the aruments that have been passed. If not present, it takes directly the date from the system setted as mm/gg/aa. 
 
@@ -33,4 +33,22 @@ This song offer a glimpse into the complexities of human interaction and the des
 
 \textit{Keywords}: Introspection, Emotions % Function that adds the key word section in my article. Using \textit words will be in cursive
 
-\section{\textit{Introduction}} % Funzione \section crea una nuova sezione del documento, in questo caso gli dico di fare l'introduzione. Posso anche digrli di scriverla in corsivo, basta usare la funzione di prima. per togliere il numero prima della sezione devo mettere * prima delle graffe. (per qualche motivo però così non ricompare più nell'indice??????)
+\section{\textit{Introduction}} % Function \section creates a new section in the document, in this way I am starting the introduction. I can tell Latex to write in cursive using \textit. To remove the number before the section we have to put * before curly brackets. (in this way it disappears from the index and we don't know why?!)
+
+\label{sec:intro} % I assign a label to the section (in this case I call it "intro") to call it beck in the text with \ref{} 
+
+% If you make a mistake in the name of the section, ?? will appear in the portion in which I call back \ref{}. Thus to understand if they are errors in the document in a simple way. 
+
+\textbf{Jigsaw} % putting in bold type the portion in the text that I write in the argument 
+Jigsaw Falling into Place by Radiohead is a song that encapsulates the exhilaration, introspection, and mixed emotions of a night out. \cite{Paul2010} % function needed to cite something from the bibliography; I have to create the bibliography and give it a lable that than I can use to call it back in the text. So before I have to create the bibliography section.
+\citep{Paul2010} % as before ?
+\smallskip
+
+% Come si fa ad andare a capoo?
+
+\citet{Paul2013} % in this case I cite the bibliography as a text only with the year inside the brackets.
+The lyrics of Jigsaw Falling into Place paint a vivid picture of a night out, capturing the excitement, chaos, and emotional rollercoaster that often accompanies such moments.
+\footnote{In reality Paul have not said neither of these things} % to insert some notes at the end of the page
+\bigskip
+
+
