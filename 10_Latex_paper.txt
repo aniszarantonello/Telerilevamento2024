@@ -1,0 +1,35 @@
+\documentclass[12pt]{article} % Ci indica il tipo di documento che stiamo facendo, in questo caso articolo e con dimensione del carattere 12 
+
+% i pacchetti vanno sempre all'inizio
+\usepackage{graphicx} % to load images 
+\usepackage{hyperref} % to create linkages inside the text 
+\usepackage{natbib} % to organize bibliography
+\usepackage{lineno} % to number rows of the text
+
+% \ sono le funzioni che hanno {}, dentro le graffe metti gli argomenti della funzione. [] si usano per modifiche strutturali o di stile modifiche strutturali.
+
+\linenumbers % funzione del pacchetto lineno che numera le righe del testo
+
+% inizo del mio documento, ci metto titopo ed autore e data
+
+\begin{document} % dopo un begin ci deve essere sempre un end che chiuda l'operazione, verificare che sia presente in base a quello che inizio
+
+\title{My first LaTeX doc - Love Space Shuttle}
+\author{Luca Fontanabona}
+\date{11 Maggio 2024} % permette di cambiare l'impostazione (americana o europea) della data a seconda degli argomenti che vengono passati. Se non è presente, pesca direttamente la data dal sistema impostandola come mm/gg/aa. 
+
+\maketitle % prende i pezzi scritti sopra begin e li scrive nel documento (serve anche se ci sono gli argomenti dopo begin, forse è il comando di fare il titolo più che scriverlo?) 
+\tableofcontents % mi genera il mio indice automaticamente e lo aggiorna ogni volta che inserisco una nuova sezione (COMODO!!) 
+
+% Voglio fare l'abstract
+
+\begin{abstract} % E poi ci scrivo il testo 
+This study is about the importance of Love between astronauts and their experiences in Love in the fourth dimension
+\end{abstract}
+
+\bigskip % Funzione che so per creare uno spazio più grande, si potrebbe fare anche con \\ alla fine della riga precedente 
+% uso \smallskip se voglio uno spazio più piccolo
+
+\textit{Keywords}: Love, Space Shuttle, Fourth Dimension % Funzione che inserisce la sezione di parole chiave del mio articolo. Abbiamo usato \textit che mette il corsivo all'argomento tra graffe
+
+\section{\textit{Introduction}} % Funzione \section crea una nuova sezione del documento, in questo caso gli dico di fare l'introduzione. Posso anche digrli di scriverla in corsivo, basta usare la funzione di prima. per togliere il numero prima della sezione devo mettere * prima delle graffe. (per qualche motivo però così non ricompare più nell'indice??????)
