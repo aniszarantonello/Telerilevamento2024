@@ -1,0 +1,62 @@
+---
+title: "Vignette"
+author: "Filippo Paganelli"
+date: "2024-05-16"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# My first markdown file!
+
+For telerilevamento 24 carajo!!!
+File -> new file -> RMD -> tieni html perchè così è più facile per creare una pagina internet.
+molto utilizzato per i report scientifici. posso fare anche dei pdf oltre che html.
+
+I pacchetti che useremo sono questi:
+```{r}
+library(imageRy)
+library(terra)
+library(viridis)
+```
+
+all'inizio cancello tutto e tengo solo le info imp. qui sopra
+con il gomitolo vado a salvare il documento. ogni volta che lo schiaccio me lo ricompila.
+
+```{r, eval=T}
+im.list()
+```
+Qui mi fa vedere tutta la lista di cose che fa il comando, per non farlo girare devo scrivere {r, eval=FALSE}
+
+In order to import data we can use the following function:
+```{r, eval=T}
+mato <- im.import("matogrosso_ast_2006209_lrg.jpg")
+```
+
+This plot is related to the following bands:band 1 = NIR, band 2 = red, band 3 = green
+
+We can change the visualization by changing the order of bands in RBG space:
+```{r, eval=T}
+im.plotRGB(mato, 1, 2, 3)
+```
+
+In order to look at different band combinations altogether we can use:
+```{r, eval=T}
+par(mfrow=c(1,3))
+im.plotRGB(mato, 1, 2, 3)
+im.plotRGB(mato, 2, 3, 1)
+im.plotRGB(mato, 3, 1, 2)
+```
+
+## Calculating spectral indicies:
+
+```{r, eval=T}
+dvi = mato[[1]]-mato[[2]]
+plot(dvi, col=magma(100))
+```
+
+## Calcolo della variabilità:
+```{r, eval=T}
+sd5 <- focal(mato[[1]], matrix(1/25, 5, 5), fun=sd) # standard deviation, MW di 5x5
+plot(sd5, col=viridis(100))
+```
