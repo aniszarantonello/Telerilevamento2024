@@ -42,18 +42,18 @@ dvi1992 = matogrosso~2219_lrg_1 - matogrosso~2219_lrg_2 #I call back the bands w
 
 #plot
 cl <- colorRampPalette(c("darkblue", "yellow", "red", "black"))(100) #this is the new color palette we will use
-plot(dvi1992, col=cl) #we plot the DVI using the new color palette
+plot(dvi1992, col = cl) #we plot the DVI using the new color palette
 
 #we calculate the DVI of the 2006 image 
 dvi2006 = m2006[[1]] - m2006[[2]] 
 #dvi2006 = m2006$matogrosso_ast_2006209_lrg_1 - m2006$matogrosso_ast_2006209_lrg_2 #this is also a way
 dvi2006 #the answer on R will report max and min values 
-plot(dvi2006, col=cl) #we plot the DVI using the same color palette as we did before
+plot(dvi2006, col = cl) #we plot the DVI using the same color palette as we did before
 
 #plot dvi1996 beside the dvi2006
-par(mfrow=c(1,2)) #our multiframe has a single row and 2 columns
-plot(dvi1992, col=cl) #we add the DVI plot from 1992
-plot(dvi2006, col=cl) #we add the DVI plot from 2006
+par(mfrow = c(1,2)) #our multiframe has a single row and 2 columns
+plot(dvi1992, col = cl) #we add the DVI plot from 1992
+plot(dvi2006, col = cl) #we add the DVI plot from 2006
 
 #Calcolculating the NDVI (Normalised Difference Vegetation Index)
 ndvi1992 = dvi1992/(m1992[[1]]+m1992[[2]]) #we simply have divided the DVI (which is a difference between nir and red ) with the sum nir + red
@@ -61,6 +61,6 @@ ndvi2006 = dvi2006/(m2006[[1]]+m2006[[2]]) #the same for the 2006
 
 dev.off()
 
-par(mfrow=c(1,2)) #multiframe with the two NDVI
-plot(ndvi1992, col=cl) #we plot the 1992 image with the color palette we created before
-plot(ndvi2006, col=cl) #we add the NDVI from 2006
+par(mfrow = c(1,2)) #multiframe with the two NDVI
+plot(ndvi1992, col = cl) #we plot the 1992 image with the color palette we created before
+plot(ndvi2006, col = cl) #we add the NDVI from 2006
