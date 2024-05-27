@@ -139,6 +139,9 @@ propsettembre = freqsettembre / totsettembre #is a proportion between the freque
 percsettembre = propsettembre * 100 
 
 
+#MANCA LA PARTE DEI PLOT MA FALLO LA VOLTA DEFINITIVA DATO CHE OGNI VOLTA TI CAMBIA LE CLASSI
+
+
 
 
 
