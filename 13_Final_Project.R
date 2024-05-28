@@ -53,19 +53,32 @@ plot(dNBRtn, col = viridis)
 
 
 
+#####da rivedere cosa classificare
+# Now we classify the land cover to see the differences between July and September
+#importing false color images:
+july2 <- rast("luglio_falsecolor.jpg")
+sept2 <- rast("settembre_falsecolor.jpg")
+# band 1 = nir = R
+# band 2 = red = G
+# band 3 = green = B
 
+#classification: #quantiffying fire cover 
+julyc <- im.classify(july2, num_cluster = 3)
+#class 1 = forest #questi cambiano ogni volta quindi da rivedere 
+#class 2 = human and fire modification
+#class 3 = sea and desert
+septc <- im.classify(sept2, num_cluster = 3)
+#class 1 = forest
+#class 2 = human and fire modification
+#class 3 = sea and desert
 
+##potrei anche calcolare la variability
 
 
 
 #########################
 
-#importing false color images:
-luglio <- rast("luglio_falsecolor.jpg")
-settembre <- rast("settembre_falsecolor.jpg")
-# band 1 = nir = R
-# band 2 = red = G
-# band 3 = green = B
+
 
 
 #importing images
@@ -175,11 +188,11 @@ plot(ndviluglio, col = vir)
 plot(ndvisettembre, col = vir)
 
 #classification: #quantiffying fire cover 
-lclassy <- im.classify(luglio, num_cluster = 3)
+julyc <- im.classify(luglio, num_cluster = 3)
 #class 1 = forest #questi cambiano ogni volta quindi da rivedere 
 #class 2 = human and fire modification
 #class 3 = sea and desert
-sclassy <- im.classify(settembre, num_cluster = 3)
+septc <- im.classify(settembre, num_cluster = 3)
 #class 1 = forest
 #class 2 = human and fire modification
 #class 3 = sea and desert
@@ -202,14 +215,4 @@ percsettembre = propsettembre * 100
 
 
 #MANCA LA PARTE DEI PLOT MA FALLO LA VOLTA DEFINITIVA DATO CHE OGNI VOLTA TI CAMBIA LE CLASSI
-
-
-
-
-
-
-
-
-
-
 
