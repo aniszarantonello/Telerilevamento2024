@@ -1,9 +1,72 @@
 library(terra) 
 library(imageRy)
 library(viridis)
-install.packages("ggplot2")
+library(ggplot2)
+library(patchwork)
 
 setwd("C:/Users/anisz/Downloads") #we explain to the system in which folder of my PC it has to extract the data we want to import 
+
+# The aim of the project is calculate the area damaged by the fire that affected Tenerife island from the 15th till the 30th of august 2023.
+# Data taken from Copernicus Browser
+# We calculate the NBR index, a standard for fire severity assessment, which is used to highlight burned areas in large fire zones.
+# We first calculate it for july and then for september.
+
+cl.tn <- colorRampPalette(c("yellow", "slateblue", "wheat4")) (100)
+
+#july NBR
+july <- rast("luglio_swir.jpg")
+# 1 = B12 = SWIR
+# 2 = B8 = NIR
+# 3 = B4 = red
+
+plot(july[[1]], col = cl.tn)  #swir: absorbed by vegetation
+plot(july[[2]], col= cl.tn)  #nir: reflected the vegetation
+
+diff.july = july[[2]] - july[[1]] 
+plot(diff.july, col = cl.tn)
+sum.july = july[[1]] + july[[2]]
+plot(sum.july, col = cl.tn)
+NBR_july = (diff.july) / (sum.july)
+
+viridis <- colorRampPalette(viridis(7))(255) #recall package viridis
+plot(NBR_july, col = viridis) # we use viridis to enhance differences
+
+#september
+sept <- rast("settembre_swir.jpg")
+plot(sept[[1]], col = cl.tn) #swir
+plot(sept[[2]], col= cl.tn) #nir
+diff.sept = sept[[2]] - sept[[1]]
+plot(diff.sept, col = cl.tn)
+sum.sept = sept[[1]] + sept[[2]]
+plot(sum.sept, col = cl.tn)
+NBR_sept = (diff.sept) / (sum.sept)
+
+#we put them on a stack
+NBR_stack <- c(NBR_july, NBR_sept)
+names(NBR_stack) <- c("NBR july", "NBR september")
+plot(NBR_stack, col = viridis)
+#non me lo fa fareeeee
+
+#dNBR or delta NBR can be used to estimate the burn severity. is the difference between the pre-fire and post-fire NBR 
+dNBR_tn = (NBR_july) - (NBR_sept)
+plot(nNBR_tn, col = viridis)
+
+
+
+
+
+
+
+
+#########################
+
+#importing false color images:
+luglio <- rast("luglio_falsecolor.jpg")
+settembre <- rast("settembre_falsecolor.jpg")
+# band 1 = nir = R
+# band 2 = red = G
+# band 3 = green = B
+
 
 #importing images
 t07 <- rast("Tenerife_luglio.jpg") #this function creates SpatRaster objects; we load in R the image of Tenerife before the fire
@@ -34,7 +97,7 @@ B08settembre <- rast("B08_settembre.jpg") #--> nir
 #stacksent luglio
 vir <- colorRampPalette(viridis(7)) (256)
 stacksent <- c(B02luglio, B03luglio, B04luglio, B08luglio) 
-plot(stacksent, col = inf)
+plot(stacksent, col = vir)
 
 #RGB plotting
 #stacksent[[1]] = b2 = blue
@@ -46,7 +109,6 @@ im.plotRGB(stacksent, 3, 2, 1) #natural color
 im.plotRGB(stacksent, 4, 3, 2) #nir on red
 im.plotRGB(stacksent, 3, 4, 2) #nir on green
 im.plotRGB(stacksent, 3, 2, 4) #nir on blue
-
 
 #stacksent settembre
 vir <- colorRampPalette(viridis(7)) (256)
@@ -83,7 +145,7 @@ settembre <- rast("settembre_falsecolor.jpg")
 # band 2 = red = G
 # band 3 = green = B
 
-par(mfrow = c(2,3)) #2 rows and 3 columns where rows refers to 1992 and 2006, and in columns there is the nir in the various bands
+par(mfrow = c(2,3)) #2 rows and 3 columns where rows refers to july and september, and in columns there is the nir in the various bands
 #now we load all images 
 im.plotRGB(luglio, 1, 2, 3) #nir on red
 im.plotRGB(luglio, 2, 1, 3) #nir on green
