@@ -42,14 +42,14 @@ plot(sum.sept, col = cl.tn)
 NBR_sept = (diff.sept) / (sum.sept)
 
 #we put them on a stack
-NBR_stack <- c(NBR_july, NBR_sept)
+NBRstack <- (NBR_july, NBR_sept)
 names(NBR_stack) <- c("NBR july", "NBR september")
 plot(NBR_stack, col = viridis)
 #non me lo fa fareeeee
 
 #dNBR or delta NBR can be used to estimate the burn severity. is the difference between the pre-fire and post-fire NBR 
-dNBR_tn = (NBR_july) - (NBR_sept)
-plot(nNBR_tn, col = viridis)
+dNBR = (NBR_july) - (NBR_sept)
+plot(dNBRtn, col = viridis)
 
 
 
