@@ -1,26 +1,29 @@
+## The aim of the project is calculate the area damaged by the fire that affected Tenerife island from the 15th till the 30th of august 2023.
+# Data taken from Copernicus Browser
+
+#first of all we recall all the packages we need 
 library(terra) 
 library(imageRy)
 library(viridis)
 library(ggplot2)
 library(patchwork)
 
+#we set the working directory
 setwd("C:/Users/anisz/Downloads") #we explain to the system in which folder of my PC it has to extract the data we want to import 
 
-# The aim of the project is calculate the area damaged by the fire that affected Tenerife island from the 15th till the 30th of august 2023.
-# Data taken from Copernicus Browser
-# We calculate the NBR index, a standard for fire severity assessment, which is used to highlight burned areas in large fire zones.
-# We first calculate it for july and then for september.
+## We calculate the NBR index, a standard for fire severity assessment, which is used to highlight burned areas in large fire zones.
+## We first calculate it for july and then for september.
 
 cl.tn <- colorRampPalette(c("yellow", "slateblue", "wheat4")) (100)
 
-#july NBR
+## july NBR
 july <- rast("luglio_swir.jpg")
 # 1 = B12 = SWIR
 # 2 = B8 = NIR
 # 3 = B4 = red
 
 plot(july[[1]], col = cl.tn)  #swir: absorbed by vegetation
-plot(july[[2]], col= cl.tn)  #nir: reflected the vegetation
+plot(july[[2]], col= cl.tn)  #nir: reflected by vegetation
 
 diff.july = july[[2]] - july[[1]] 
 plot(diff.july, col = cl.tn)
@@ -31,7 +34,7 @@ NBR_july = (diff.july) / (sum.july)
 viridis <- colorRampPalette(viridis(7))(255) #recall package viridis
 plot(NBR_july, col = viridis) # we use viridis to enhance differences
 
-#september
+## september NBR
 sept <- rast("settembre_swir.jpg")
 plot(sept[[1]], col = cl.tn) #swir
 plot(sept[[2]], col= cl.tn) #nir
@@ -45,11 +48,13 @@ NBR_sept = (diff.sept) / (sum.sept)
 NBRstack <- (NBR_july, NBR_sept)
 names(NBR_stack) <- c("NBR july", "NBR september")
 plot(NBR_stack, col = viridis)
-#non me lo fa fareeeee
+#non funziona
 
 #dNBR or delta NBR can be used to estimate the burn severity. is the difference between the pre-fire and post-fire NBR 
 dNBR = (NBR_july) - (NBR_sept)
 plot(dNBRtn, col = viridis)
+#non funziona
+
 
 
 
