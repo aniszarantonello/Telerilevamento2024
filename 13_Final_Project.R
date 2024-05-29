@@ -44,8 +44,10 @@ sum.sept = sept[[1]] + sept[[2]]
 plot(sum.sept, col = cl.tn)
 NBR_sept = (diff.sept) / (sum.sept)
 
+plot(NBR_sept, col = viridis)
+
 #we put them on a stack
-NBRstack <- (NBR_july, NBR_sept)
+NBRstack <- c(NBR_july, NBR_sept)
 names(NBR_stack) <- c("NBR july", "NBR september")
 plot(NBR_stack, col = viridis)
 #non funziona
