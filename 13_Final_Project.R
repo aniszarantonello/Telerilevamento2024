@@ -1,4 +1,4 @@
-## The aim of the project is calculate the area damaged by the fire that affected Tenerife island from the 15th till the 30th of august 2023.
+## The aim of the project is to calculate the area damaged by the fire that affected Tenerife island from the 15th till the 30th of august 2023.
 # Data taken from Copernicus Browser
 
 #first of all we recall all the packages we need 
