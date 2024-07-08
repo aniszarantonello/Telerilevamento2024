@@ -1,0 +1,147 @@
+\documentclass{beamer}
+\usepackage{graphicx} % Required for inserting images
+
+\usetheme{PaloAlto}
+\usecolortheme{seahorse}
+
+\title{The fire that hit Tenerife in august 2023}
+\author{Anis Edena Zarantonello}
+\date{10 July 2024}
+
+\begin{document}
+
+\maketitle % is a prefixed way to make the title, is necessary if we want uniform titles 
+
+\AtBeginSection[] 
+{
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents[currentsection] % to do an index at the beginning of every section to make evident the new section.
+\end{frame}
+}
+
+
+\section{Introduction}
+\begin{frame}{Fires affecting Tenerife}
+\begin{itemize}
+    \item August 15 - September 11
+    \item A "sixth generation wildfire"
+    \item Intentioned fire, but Global Worming as the main driver
+    \item 15.000 hectares, 12 municipalities, great natural damages
+\end{itemize}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{center}
+    \includegraphics[width=\textwidth]{ten1.jpg}
+\end{center}
+\end{column}
+\begin{column}{0.5\textwidth}  
+    \begin{center}
+     \includegraphics[width=\textwidth]{ten2.jpg}
+     \end{center}
+\end{column}
+\end{columns}
+\end{frame} 
+
+
+\section{Aim of the project}
+
+\begin{frame}{Aim of the project}
+\begin{itemize}
+    \item Analysis of the area damaged from the beginning of the fire till september
+    \item Comparison: July 9 - Semptember 7
+\end{itemize}
+\begin{column}{1\textwidth}
+    \begin{center}
+        \includegraphics[width=\textwidth]{Tenerife_settembre.jpg}
+    \end{center}
+\end{column}
+\end{frame}
+
+\begin{frame}{Aim of the project}
+Analysis of the following indices:
+\begin{itemize}
+    \item \begin{equation}
+NBR=\frac{NIR-SWIR}{NIR+SWIR}
+    \end{equation}
+    \item  \begin{equation}
+dNBR=prefireNBR - postfireNBR
+    \end{equation}
+\end{itemize}
+between days july 9 and september 7, to compare the pre fire and the post fire situation
+\end{frame}
+
+\begin{frame}{Aim of the project}
+\textit{What is the NBR Index?}
+\includegraphics[width=\textwidth]{NBR.png}
+\end{frame}
+
+
+\section{Matherials and methods}
+
+\begin{frame}{Materials and methods}
+\begin{itemize}
+    \item Copernicus browser: Sentinel-2 bands (NIR, SWIR)
+    \item R Studio for data analysis
+\end{itemize}
+% dato che nn viene farei due foto e via
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\section{Results: overview}
+\begin{frame}{NBR overview}
+\includegraphics[width=\textwidth]{NBRdifference.jpeg}
+\end{frame}
+
+\begin{frame}{dNBR overview}
+  \includegraphics[width=\textwidth]{dNBR.jpeg}  
+\end{frame}
+
+\section{Results in the interested area: NBR}
+\begin{frame}{Results in the interested area: NBR}
+\includegraphics[width=\textwidth]{NBRzona2.jpeg}
+\end{frame}
+
+\begin{frame}{Results in the interested area: dNBR}
+\includegraphics[width=\textwidth]{dNBRzona.jpeg}
+\end{frame}
+
+\begin{frame}{Results in the interested area}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{Julyclassified.jpeg}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{Septclassified.jpeg}
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Frame Title}
+\includegraphics[width=\textwidth]{classification.jpeg}
+\end{frame}
+
+
+\section{Discussion}
+\begin{frame}{Discussion}
+\begin{itemize}
+    \item 
+\end{itemize}
+    
+\end{frame}
+
+    
+
+
+
+
+
+\end{document}
