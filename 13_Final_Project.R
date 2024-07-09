@@ -1,4 +1,4 @@
-## The aim of the project is calculate the area damaged by the fire that affected Tenerife island from the 15th of august till the 5th of september 2023.
+## The aim of the project is to calculate the area damaged by the fire that affected Tenerife island from the 15th of august till the 5th of september 2023.
 # Data taken from Copernicus Browser
 
 #first of all we recall all the packages we need 
@@ -29,8 +29,8 @@ plot(sept)
 dev.off()
 
 ## july NBR
-plot(july[[1]], col = cl.tn)  #swir: absorbed by vegetation
-plot(july[[2]], col= cl.tn)  #nir: reflected by vegetation
+plot(july[[1]], col = cl.tn, main="July SWIR")  #swir: absorbed by vegetation #with main we add a title
+plot(july[[2]], col= cl.tn, main="September SWIR")  #nir: reflected by vegetation
 
 diff.july = july[[2]] - july[[1]] 
 plot(diff.july, col = cl.tn)
@@ -38,12 +38,12 @@ sum.july = july[[1]] + july[[2]]
 plot(sum.july, col = cl.tn)
 NBR_july = (diff.july) / (sum.july)
 
-viridis <- colorRampPalette(viridis(7))(255) #recall package viridis
-plot(NBR_july, col = viridis) # we use viridis to enhance differences
+viridis <- colorRampPalette(viridis(7))(255) #using package viridis 
+plot(NBR_july, col = viridis) 
 
 ## september NBR
-plot(sept[[1]], col = cl.tn) #swir
-plot(sept[[2]], col= cl.tn) #nir
+plot(sept[[1]], col = cl.tn, main="July SWIR") #swir
+plot(sept[[2]], col= cl.tn, main="September SWIR") #nir
 diff.sept = sept[[2]] - sept[[1]]
 plot(diff.sept, col = cl.tn)
 sum.sept = sept[[1]] + sept[[2]]
