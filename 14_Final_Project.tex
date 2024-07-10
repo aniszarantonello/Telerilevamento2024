@@ -21,9 +21,9 @@
 }
 
 
-\section{Introduction}
-\begin{frame}{Introduction}
-\begin{itemize}
+\section{Introduction} % adding a new section
+\begin{frame}{Introduction} % adding a slide
+\begin{itemize} % to create a list
     \item August 15 - September 5
     \item A "sixth generation wildfire"
     \item Intentioned fire, but Global Warming as the main driver
@@ -43,7 +43,23 @@
 \end{columns}
 \end{frame} 
 
-\section{Study Area}
+\section{Study Area} 
+\begin{frame}{Study Area}
+Tenerife \begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{center}
+    \includegraphics[width=\textwidth]{ten1.jpg}
+\end{center}
+\end{column}
+\begin{column}{0.5\textwidth}  
+    \begin{center}
+     \includegraphics[width=\textwidth]{ten2.jpg}
+     \end{center}
+\end{column}
+\end{columns}
+\end{frame} 
+
+\section{Study Area} 
 \begin{frame}{Study Area}
 Tenerife - Canary Islands
 \begin{columns}
@@ -86,7 +102,8 @@ NBR=\frac{NIR-SWIR}{NIR+SWIR}
 dNBR=prefireNBR - postfireNBR
     \end{equation}
 \end{itemize}
-between days july 9 and september 7, to compare the pre fire and post fire situation
+between days july 9 and september 7, to compare the pre fire and post fire situation. 
+A classification based on the NBR will be done to quantify the land cover change. 
 \end{frame}
 
 \begin{frame}{What is the Normalized Burn Ratio (NBR)?}
@@ -99,11 +116,12 @@ between days july 9 and september 7, to compare the pre fire and post fire situa
 \end{frame}
 
 
+
 \section{Matherials and methods}
 
 \begin{frame}{Materials and methods}
 \begin{itemize}
-    \item Copernicus browser: Sentinel-2, bands NIR (b8), SWIR(b12)
+    \item Copernicus browser: Sentinel-2, bands NIR (b8), SWIR (b12)
     \item R Studio for data analysis
 \end{itemize}
 % dato che nn viene farei due foto e via
@@ -148,7 +166,6 @@ between days july 9 and september 7, to compare the pre fire and post fire situa
 \end{columns}
 \end{frame}
 
-
 \begin{frame}{Land cover changes}
 \includegraphics[width=\textwidth]{classification.jpeg}
 \end{frame}
@@ -158,12 +175,20 @@ between days july 9 and september 7, to compare the pre fire and post fire situa
 \begin{frame}{Discussion and conclusions}
 \begin{itemize}
     \item The results obtained with this analysis highlight a loss of vegetation cover caused by the fire.
-    \item NBR index values decrease from +1 to -1 comparing june to september, while dNBR shows values near +1, indicating a high burn severity.  
+    \item NBR index values decrease from +1 to -1 comparing june to september, while dNBR shows values near +1, indicating a high burn severity following the United States Geological Survey (USGS) classifcation.  
     \item Fires are happening more and more and this leads to huge environmental impacts having significant natural and social consequences.
 \end{itemize}
     
 \end{frame}
 
-    
+\section{Sitography}
+\begin{frame}{Sitography}
+\begin{itemize}
+    \item  https://browser.dataspace.copernicus.eu/
+    \item  https://www.un-spider.org/advisory-support/recommended-practices/recommended-practice-burn-severity/in-detail/normalized-burn-ratio
+    \item  https://www.bbc.com/mundo/noticias-62206535
+\end{itemize}
+\tiny My Git-hub project: https://github.com/aniszarantonello/Telerilevamento2024/blob/main/13_Final_Project.R % with tiny I reduced the font size
+\end{frame}
 
 \end{document}
